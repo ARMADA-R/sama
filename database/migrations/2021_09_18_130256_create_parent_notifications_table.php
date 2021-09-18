@@ -19,7 +19,7 @@ class CreateParentNotificationsTable extends Migration
             $table->foreign('parent_account_id')->references('id')->on('parent_accounts');
             $table->text('message');
             $table->string('type');
-            $table->timestamps('read_at');
+            $table->dateTime('read_at');
             $table->timestamps();
         });
     }
