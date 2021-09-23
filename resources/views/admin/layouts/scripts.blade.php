@@ -13,7 +13,7 @@
 <!-- END: Theme JS-->
 
 <!-- BEGIN: Page JS-->
-<script src="{{ url('design') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script>
+<!-- <script src="{{ url('design') }}/app-assets/js/scripts/pages/dashboard-ecommerce.js"></script> -->
 <!-- END: Page JS-->
 
 <script>
@@ -24,5 +24,27 @@
                 height: 14
             });
         }
-    })
+
+    });
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "9000",
+        "extendedTimeOut": "5000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "slideDown",
+        "hideMethod": "slideUp",
+        "toastClass": 'toastr'
+    };
 </script>
+@include("admin.layouts.message")
+
+@stack('scripts')

@@ -1,0 +1,35 @@
+<?php
+
+return [
+
+    'Profile Details' => 'Profile Details',
+    'upload' => 'Upload',
+    'reset' => 'Reset',
+    'Allowed file types: png, jpg, jpeg.' => 'Allowed file types: png, jpg, jpeg.',
+    'First Name' => 'First Name',
+    'Last Name' => 'Last Name',
+    'Organization' => 'Organization',
+    'Phone Number' => 'Phone Number',
+    'Address' => 'Address',
+    'State' => 'State',
+    'Zip Code' => 'Zip Code',
+    'Email' => 'Email',
+    'Username' => 'Username',
+    'Delete Account' => 'Delete Account',
+    'Close Account' => 'Close Account',
+    'Save changes' => 'Save changes',
+    'Discard' => 'Discard',
+    'Deactivate Account' => 'Deactivate Account',
+    'Are you sure you want to delete your account?' => 'Are you sure you want to delete your account?',
+    'Once you delete your account, there is no going back. Please be certain.' => 'Once you delete your account, there is no going back. Please be certain.',
+    'I confirm my account deactivation' => 'I confirm my account deactivation',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    '' => '',
+    'user' => "We can't find a user with that email address.",
+
+];

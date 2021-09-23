@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'parent',
         'passwords' => 'users',
     ],
 
@@ -36,7 +36,11 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'parent' => [
+            'driver' => 'session',
+            'provider' => 'parents',
+        ],
+        'admin' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -64,6 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'parents' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ParentAccount::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -89,6 +97,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'parents' => [
+            'provider' => 'parents',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
