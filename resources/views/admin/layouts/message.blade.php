@@ -2,7 +2,9 @@
 @foreach (session('errors')->all() as $msg)
 
 <script>
-    toastr.error("{{ $msg }}");
+    $(window).on('load', function() {
+        toastr.error("{{ $msg }}");
+    });
 </script>
 @endforeach
 {{session()->forget('errors')}}
@@ -12,12 +14,16 @@
 @if(is_array(session('info')))
 @foreach (session('info')->all() as $msg)
 <script>
-    toastr.info("{{ $msg }}");
+    $(window).on('load', function() {
+        toastr.info("{{ $msg }}");
+    });
 </script>
 @endforeach
 @else
 <script>
-    toastr.info("{{ session('info') }}");
+    $(window).on('load', function() {
+        toastr.info("{{ session('info') }}");
+    });
 </script>
 @endif
 {{session()->forget('info')}}
@@ -27,12 +33,16 @@
 @if(is_array(session('success')))
 @foreach (session('success')->all() as $msg)
 <script>
-    toastr.success("{{ $msg }}");
+    $(window).on('load', function() {
+        toastr.success("{{ $msg }}");
+    });
 </script>
 @endforeach
 @else
 <script>
-    toastr.success("{{ session('success') }}");
+    $(window).on('load', function() {
+        toastr.success("{{ session('success') }}");
+    });
 </script>
 @endif
 {{session()->forget('success')}}
@@ -43,12 +53,16 @@
 @if(is_array(session('warning')))
 @foreach (session('warning')->all() as $msg)
 <script>
-    toastr.warning("{{ $msg }}");
+    $(window).on('load', function() {
+        toastr.warning("{{ $msg }}");
+    });
 </script>
 @endforeach
 @else
 <script>
-    toastr.warning("{{ session('warning') }}");
+    $(window).on('load', function() {
+        toastr.warning("{{ session('warning') }}");
+    });
 </script>
 @endif
 {{session()->forget('warning')}}

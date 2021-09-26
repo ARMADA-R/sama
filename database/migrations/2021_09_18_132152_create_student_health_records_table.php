@@ -18,7 +18,7 @@ class CreateStudentHealthRecordsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }

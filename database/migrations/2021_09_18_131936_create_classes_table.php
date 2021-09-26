@@ -18,7 +18,7 @@ class CreateClassesTable extends Migration
             $table->string('title');
             $table->string('code');
             $table->unsignedBigInteger('stage_id');
-            $table->foreign('stage_id')->references('id')->on('stages');
+            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');;
             $table->timestamps();
         });
     }

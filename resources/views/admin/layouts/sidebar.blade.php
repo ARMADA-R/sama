@@ -26,7 +26,7 @@
                                    </g>
                                </g>
                            </svg></span>
-                       <h2 class="brand-text">Vuexy</h2>
+                       <h2 class="brand-text">Sama</h2>
                    </a></li>
                <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pe-0" data-bs-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
            </ul>
@@ -34,7 +34,7 @@
        <div class="shadow-bottom"></div>
        <div class="main-menu-content">
            <ul class="navigation navigation-main " id="main-menu-navigation" data-menu="menu-navigation">
-
+               @can('viewAny', App\Models\User::class)
                <li class=" nav-item font-tajawal">
                    <a class="d-flex align-items-center" href="index.html">
                        <i data-feather="home"></i>
@@ -46,52 +46,64 @@
                        </span> -->
                    </a>
                    <ul class="menu-content">
-                       <li>
+
+                       <li class="{{ (Request::is('admin/users')  || Request::is('admin/users/*')? 'active' : '') }}">
                            <a class="d-flex align-items-center" href="{{route('admin.users')}}">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="Analytics">
-                               {{ trans("general.Admins") }}
+                                   {{ trans("general.Admins") }}
                                </span>
                            </a>
                        </li>
-                       <li class="active">
+                       
+                       <li class="{{ (Request::is('admin/parents') || Request::is('admin/parents/*') ? 'active' : '') }}">
                            <a class="d-flex align-items-center" href="dashboard-ecommerce.html">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="eCommerce">
-                                {{ trans("general.Parents") }}
+                                   {{ trans("general.Parents") }}
+                               </span>
+                           </a>
+                       </li>
+
+                       <li class="{{ (Request::is('admin/students') || Request::is('admin/students/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="dashboard-ecommerce.html">
+                               <i data-feather="circle"></i>
+                               <span class="menu-item text-truncate" data-i18n="eCommerce">
+                                   {{ trans("general.students") }}
                                </span>
                            </a>
                        </li>
                    </ul>
                </li>
-
+               @endcan
+               @can('viewAny', App\Models\Role::class)
                <li class=" nav-item">
                    <a class="d-flex align-items-center" href="#">
                        <i data-feather="shield"></i>
                        <span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">
-                       {{ trans("general.Roles") }} &amp;  {{ trans("general.Permission") }}
-                        </span>
-                    </a>
+                           {{ trans("general.Roles") }} &amp; {{ trans("general.Permission") }}
+                       </span>
+                   </a>
                    <ul class="menu-content">
-                       <li>
-                           <a class="d-flex align-items-center" href="app-access-roles.html">
+                       <li class="{{ (Request::is('admin/roles') || Request::is('admin/roles/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.roles')}}">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="Roles">
-                               {{ trans("general.Roles") }}
-                                </span>
-                            </a>
+                                   {{ trans("general.Roles") }}
+                               </span>
+                           </a>
                        </li>
-                       <li>
+                       <!-- <li>
                            <a class="d-flex align-items-center" href="app-access-permission.html">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="Permission">
                                    Permission
                                 </span>
                             </a>
-                       </li>
+                       </li> -->
                    </ul>
                </li>
-
+               @endcan
 
                <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
                </li>

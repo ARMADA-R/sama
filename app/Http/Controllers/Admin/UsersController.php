@@ -14,11 +14,9 @@ use Illuminate\Validation\Rules\Password;
 
 class UsersController extends Controller
 {
-    //
-
     public function users(UsersDataTable $user)
     {
-        // $this->authorize('viewAny', User::class);
+        $this->authorize('viewAny', User::class);
         return ($user->render('admin.users.users-index'));
     }
 
@@ -31,7 +29,7 @@ class UsersController extends Controller
 
     public function create(Request $request)
     {
-
+        $this->authorize('create', User::class);
         $data = ($request->all());
         Validator::make($data, [
             'firstName' => ['required', 'max:255'],
@@ -58,6 +56,7 @@ class UsersController extends Controller
 
     public function showUpdateAdminView($id)
     {
+        $this->authorize('view', User::class);
         $roles = Role::all();
         $user = User::find($id);
         return view('admin.users.users-edit', ['roles' => $roles, 'user' => $user]);
@@ -65,6 +64,7 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', User::class);
         $data = ($request->all());
         Validator::make($data, [
             'firstName' => ['required', 'max:255'],
@@ -94,6 +94,7 @@ class UsersController extends Controller
 
     public function updatePassword(Request $request, $id)
     {
+        $this->authorize('update', User::class);
         $data = ($request->all());
         Validator::make($data, [
             'password' => ['required', 'confirmed', Password::min(4)],
@@ -116,6 +117,7 @@ class UsersController extends Controller
 
     public function updateAccountStatus(Request $request, $id)
     {
+        $this->authorize('update', User::class);
         $data = ($request->all());
         Validator::make($data, [
             'status' => ['required', Rule::in(['0', '1'])]

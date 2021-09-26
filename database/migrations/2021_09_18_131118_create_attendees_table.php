@@ -18,7 +18,7 @@ class CreateAttendeesTable extends Migration
             $table->date('date');
             $table->enum('status', ['delay', 'absence', 'present', 'excusedAbsent', 'excusedDelay']);
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             $table->timestamps();
         });
     }

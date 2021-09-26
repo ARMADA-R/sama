@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'admin',
-    // 'middleware' => ['setAdminUser', 'AuthenticateAdminsSession'],
+    'middleware' => ['defineAdmin'],//, 'AuthenticateAdminsSession'
 ],  function () {
     Config::set('auth.defines', 'admin');
 
@@ -77,14 +77,27 @@ Route::group([
             Route::post('users/edit/{id}/password', [App\Http\Controllers\Admin\UsersController::class, "updatePassword"])->name('admin.users.update.password');
             Route::post('users/edit/{id}/status', [App\Http\Controllers\Admin\UsersController::class, "updateAccountStatus"])->name('admin.users.update.status');
             
-            Route::get('users/account/details/{id}', 'UsersManagerController@accountDetails')->name('admin.UserAccountDetails');
-            Route::get('users/account/edit/{id}', 'UsersManagerController@editAcountGET')->name('admin.UsersAccountEdit');
-            Route::post('users/account/edit', 'UsersManagerController@editAcountPOST')->name('admin.updateAccountDetails');
-            Route::post('users/account/edit/password', 'UsersManagerController@UpdateAcountPassword')->name('admin.updateAccountPassword');
-            Route::post('account/close', 'UsersManagerController@closeAccount')->name('admin.CloseUserAccount');
-            Route::post('account/update/avatar', 'UsersManagerController@updateAvatar')->name('admin.updateAccountAvatar');
-            Route::post('account/activate', 'UsersManagerController@activateAccount')->name('admin.ActivateUserAccount');
-            Route::get('user-data', 'UsersManagerController@getCustomFilterData');
+
+            
+
+            Route::get('students', [App\Http\Controllers\Admin\StudentsController::class, "students"])->name('admin.students');;
+            // Route::get('users/create', [App\Http\Controllers\Admin\StudentsController::class, "showCreateAdminView"])->name('admin.users.create');
+            // Route::post('users/create', [App\Http\Controllers\Admin\StudentsController::class, "create"]);
+            // Route::get('users/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "showUpdateAdminView"])->name('admin.users.update');
+            // Route::post('users/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "update"]);
+            // Route::post('users/edit/{id}/password', [App\Http\Controllers\Admin\StudentsController::class, "updatePassword"])->name('admin.users.update.password');
+            // Route::post('users/edit/{id}/status', [App\Http\Controllers\Admin\StudentsController::class, "updateAccountStatus"])->name('admin.users.update.status');
+            
+
+
+            // Route::get('users/account/details/{id}', 'UsersManagerController@accountDetails')->name('admin.UserAccountDetails');
+            // Route::get('users/account/edit/{id}', 'UsersManagerController@editAcountGET')->name('admin.UsersAccountEdit');
+            // Route::post('users/account/edit', 'UsersManagerController@editAcountPOST')->name('admin.updateAccountDetails');
+            // Route::post('users/account/edit/password', 'UsersManagerController@UpdateAcountPassword')->name('admin.updateAccountPassword');
+            // Route::post('account/close', 'UsersManagerController@closeAccount')->name('admin.CloseUserAccount');
+            // Route::post('account/update/avatar', 'UsersManagerController@updateAvatar')->name('admin.updateAccountAvatar');
+            // Route::post('account/activate', 'UsersManagerController@activateAccount')->name('admin.ActivateUserAccount');
+            // Route::get('user-data', 'UsersManagerController@getCustomFilterData');
 
             Route::get('languages', 'LanguagesManagerController@languages')->name('admin.languages');
             Route::get('languages/details/{id}', 'LanguagesManagerController@languagesDetails')->name('admin.languageDetails');
@@ -96,13 +109,19 @@ Route::group([
 
             Route::get('files/manage', 'FilesManagerController@show')->name('admin.manageFiles');
 
-            Route::get('roles', 'RolesController@roles')->name('admin.showRoles');
-            Route::get('roles/details/{id}', 'RolesController@details')->name('admin.roleDetails');
-            Route::get('roles/edit/{id}', 'RolesController@edit')->name('admin.roleEdit');
-            Route::post('roles/edit', 'RolesController@update')->name('admin.roleUpdate');
-            Route::get('roles/create', 'RolesController@newRole')->name('admin.roleCreate');
-            Route::post('roles/create', 'RolesController@create');
-            Route::post('roles/delete', 'RolesController@delete')->name('admin.deleteRole');
+            Route::get('roles', [App\Http\Controllers\Admin\RolesController::class, "roles"])->name('admin.roles');
+            Route::get('roles/create', [App\Http\Controllers\Admin\RolesController::class, "showCreateRoleView"])->name('admin.roles.create');
+            Route::post('roles/create', [App\Http\Controllers\Admin\RolesController::class, "create"]);
+            Route::post('roles/delete', [App\Http\Controllers\Admin\RolesController::class, "delete"])->name('admin.roles.delete');
+            Route::get('roles/update/{id}', [App\Http\Controllers\Admin\RolesController::class, "showUpdateForm"])->name('admin.roles.update');
+            Route::post('roles/update/{id}', [App\Http\Controllers\Admin\RolesController::class, "update"]);
+
+            // Route::get('roles/details/{id}', 'RolesController@details')->name('admin.roleDetails');
+            // Route::get('roles/edit/{id}', 'RolesController@edit')->name('admin.roleEdit');
+            // Route::post('roles/edit', 'RolesController@update')->name('admin.roleUpdate');
+            // Route::get('roles/createe', 'RolesController@newRole')->name('admin.roleCreate');
+            // Route::post('roles/createe', 'RolesController@create');
+            // Route::post('roles/delete', 'RolesController@delete')->name('admin.deleteRole');
 
 
             Route::get('app/settings', 'AppSettings@showSettingsForm')->name('admin.appSettings');

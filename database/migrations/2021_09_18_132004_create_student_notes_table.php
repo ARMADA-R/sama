@@ -18,7 +18,7 @@ class CreateStudentNotesTable extends Migration
             $table->string('title');
             $table->string('type');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             $table->text('description');
             $table->timestamps();
         });

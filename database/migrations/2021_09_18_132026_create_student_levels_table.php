@@ -19,9 +19,9 @@ class CreateStudentLevelsTable extends Migration
             $table->enum('status', ['fail', 'passed']);
             $table->year('year');
             $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->timestamps();
         });
     }

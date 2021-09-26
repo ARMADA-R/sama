@@ -16,7 +16,7 @@ class CreateParentNotificationsTable extends Migration
         Schema::create('parent_notifications', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parent_account_id');
-            $table->foreign('parent_account_id')->references('id')->on('parent_accounts');
+            $table->foreign('parent_account_id')->references('id')->on('parent_accounts')->onDelete('cascade');;
             $table->text('message');
             $table->string('type');
             $table->dateTime('read_at');

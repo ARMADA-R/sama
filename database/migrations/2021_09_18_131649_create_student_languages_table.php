@@ -18,10 +18,10 @@ class CreateStudentLanguagesTable extends Migration
             $table->enum('level', ['low', 'acceptable', 'good', 'very_good', 'excellent']);
 
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             
             $table->unsignedBigInteger('language_id');
-            $table->foreign('language_id')->references('id')->on('languages');
+            $table->foreign('language_id')->references('id')->on('languages')->onDelete('cascade');;
             $table->timestamps();
         });
     }

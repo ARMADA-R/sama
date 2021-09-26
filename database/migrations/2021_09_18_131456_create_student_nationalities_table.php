@@ -16,10 +16,10 @@ class CreateStudentNationalitiesTable extends Migration
         Schema::create('student_nationalities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
-            
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
+
             $table->unsignedBigInteger('nationality_id');
-            $table->foreign('nationality_id')->references('id')->on('nationalities');
+            $table->foreign('nationality_id')->references('id')->on('nationalities')->onDelete('cascade');;
             $table->timestamps();
         });
     }

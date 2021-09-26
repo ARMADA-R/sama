@@ -18,13 +18,13 @@ class CreateExamProgramsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->unsignedBigInteger('level_id');
-            $table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
             $table->unsignedBigInteger('stage_id');
-            $table->foreign('stage_id')->references('id')->on('stages');
+            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
             $table->unsignedBigInteger('division_id');
-            $table->foreign('division_id')->references('id')->on('divisions');
+            $table->foreign('division_id')->references('id')->on('divisions')->onDelete('cascade');
             $table->unsignedBigInteger('semester_id');
-            $table->foreign('semester_id')->references('id')->on('semesters');
+            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade');
             $table->tinyText('attachment');
             $table->timestamps();
         });

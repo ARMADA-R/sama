@@ -17,11 +17,11 @@ class CreateStudentExamGradesTable extends Migration
             $table->id();
             $table->double('grade');
             $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->unsignedBigInteger('material_id');
-            $table->foreign('material_id')->references('id')->on('study_materials');
+            $table->foreign('material_id')->references('id')->on('study_materials')->onDelete('cascade');
             $table->unsignedBigInteger('semester_exam_id');
-            $table->foreign('semester_exam_id')->references('id')->on('semester_exams');
+            $table->foreign('semester_exam_id')->references('id')->on('semester_exams')->onDelete('cascade');
             $table->timestamps();
         });
     }

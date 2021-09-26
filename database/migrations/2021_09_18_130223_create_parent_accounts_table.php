@@ -16,7 +16,7 @@ class CreateParentAccountsTable extends Migration
         Schema::create('parent_accounts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parent_id');
-            $table->foreign('parent_id')->references('id')->on('parents');
+            $table->foreign('parent_id')->references('id')->on('parents')->onDelete('cascade');;
             $table->string('username');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
