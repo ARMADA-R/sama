@@ -67,9 +67,33 @@
             color: #5E5873;
         }
 
-        .demo-inline-spacing> .action-row {
+        .demo-inline-spacing>.action-row {
             margin-left: .5rem !important;
             margin-top: .5rem !important;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .hide-scrollbars::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .hide-scrollbars {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .card-overlay {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgb(255 255 255 / 50%);
+            z-index: 2;
         }
     </style>
 

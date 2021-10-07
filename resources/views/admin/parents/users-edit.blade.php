@@ -20,32 +20,32 @@ $userSettings = json_decode('{}', true);
         @csrf
         <div class="card-body">
             <div class="row pt-2">
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-xxl-3 col-xl-4 col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="fname">{{ trans('general.First Name') }}</label>
                         <input required type="text" name="firstName" class="form-control" id="fname" placeholder="Nour" value="{{old('firstName')? old('firstName') : $user->first_name}}">
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-xxl-3 col-xl-4 col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="lname">{{ trans('general.Last Name') }}</label>
                         <input required type="text" name="lastName" class="form-control" id="lname" placeholder="Yaseen" value="{{old('lastName')? old('lastName') : $user->last_name}}">
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-xxl-2 col-xl-4 col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="email">{{ trans('general.Email') }}</label>
                         <input disabled required type="text" name="email" class="form-control" id="email" placeholder="nob@gmail.com" value="{{old('email')? old('email') : $user->email}}">
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-xxl-2 col-xl-6 col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="username">{{ trans('general.Username') }}</label>
                         <input disabled required type="text" name="username" class="form-control" id="username" placeholder="no_shd" value="{{old('username')? old('username') : $user->username}}">
                     </div>
                 </div>
 
-                <div class="col-xl-4 col-md col-12">
+                <div class="col-xxl-2 col-xl-6 col-md col-12">
                     <div class="mb-1">
                         <label class="form-label" for="roleSelect">{{ trans('general.Role') }}</label>
                         <select required name="role" class="form-select" id="roleSelect">
@@ -75,13 +75,13 @@ $userSettings = json_decode('{}', true);
         @csrf
         <div class="card-body">
             <div class="row pt-2">
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="password">{{ trans('general.New Password') }}</label>
                         <input required type="text" name="password" class="form-control" id="password">
                     </div>
                 </div>
-                <div class="col-xl-4 col-md-6 col-12">
+                <div class="col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="confirm-password">{{ trans('general.Confirm your new password') }}</label>
                         <input required type="text" name="password_confirmation" class="form-control" id="confirm-password">
@@ -116,7 +116,7 @@ $userSettings = json_decode('{}', true);
         @csrf
         <div class="card-body">
             <div class="row ">
-                <div class="col-xl-4 col-md col-12">
+                <div class=" col-12">
                     <div class="mb-1 d-grid">
                         @if(!empty($userSettings))
                         @if($userSettings['status'] == 0)

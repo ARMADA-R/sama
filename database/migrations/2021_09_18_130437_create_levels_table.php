@@ -17,6 +17,7 @@ class CreateLevelsTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('code');
+            $table->integer('capacity', false, true);
             $table->unsignedBigInteger('parent_level');
             $table->foreign('parent_level')->references('id')->on('levels')->onDelete('cascade');;
             $table->unsignedBigInteger('stage_id');

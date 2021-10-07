@@ -16,7 +16,7 @@ class CreateStudentLevelsTable extends Migration
         Schema::create('student_levels', function (Blueprint $table) {
             $table->id();
             $table->string('school');
-            $table->enum('status', ['fail', 'passed']);
+            $table->enum('status', ['0', '1']);
             $table->year('year');
             $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');

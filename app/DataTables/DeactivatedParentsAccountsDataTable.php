@@ -2,16 +2,15 @@
 
 namespace App\DataTables;
 
-use App\Models\Student;
+use App\Models\DeactivatedParentsAccount;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class StudentsDataTable extends DataTable
+class DeactivatedParentsAccountsDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -23,56 +22,34 @@ class StudentsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('Action', 'admin.students.action')
+            ->addColumn('Action', 'admin.parents.action')
             ->rawColumns([
                 'Action',
             ])
-            ->setRowId(function ($record) {
-                return 'row_' . $record->id;
+            ->setRowId(function ($parent) {
+                return 'row_' . $parent->id;
             })
             ->editColumn('created_at', function ($record) {
                 return $record->created_at ? with(new Carbon($record->created_at))->format('Y-m-d H:i') : '';
             })
-            ->filterColumn('mother_name', function ($query, $keyword) {
-                $keywords = trim($keyword);
-                $query->whereRaw("CONCAT(mother.first_name, ' ',mother.last_name) like ?", ["%{$keywords}%"]);
-             })
-            ->filterColumn('father_name', function ($query, $keyword) {
-                $keywords = trim($keyword);
-                $query->whereRaw("CONCAT(father.first_name, ' ',father.last_name) like ?", ["%{$keywords}%"]);
-             })->addIndexColumn();
+            ->addIndexColumn();
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Student $model
+     * @param \App\Models\DeactivatedParentsAccount $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Student $model)
+    public function query(DeactivatedParentsAccount $model)
     {
-        return Student::select(
-            'students.id',
-            'students.first_name',
-            'students.last_name',
-            'students.gender',
-            'cities.title as city',
-            'students.area',
-            'students.telephone',
-            'divisions.title as division',
-            DB::raw("CONCAT(mother.first_name, ' ',mother.last_name) AS mother_name"),
-            DB::raw("CONCAT(father.first_name, ' ',father.last_name) AS father_name"),
-        )
-            ->leftJoin('parents as mother', 'students.mother_id', '=', 'mother.id')
-            ->leftJoin('parents as father', 'students.father_id', '=', 'father.id')
-            ->leftJoin('divisions', 'students.division_id', '=', 'divisions.id')
-            ->leftJoin('cities', 'students.city_id', '=', 'cities.id');
+        return $model->select('parents.*', 'deactivated_parents_accounts.username', 'deactivated_parents_accounts.password')->join('parents', 'parents.id', '=', 'deactivated_parents_accounts.parent_id');
     }
 
+    
 
     public function lang()
     {
-
         $langJson = [
             "sEmptyTable"     =>  trans('general.datatable.sEmptyTable'),
             "sInfo"           =>  trans('general.datatable.sInfo'),
@@ -96,6 +73,7 @@ class StudentsDataTable extends DataTable
     }
 
 
+
     /**
      * Optional method if you want to use html builder.
      *
@@ -104,7 +82,7 @@ class StudentsDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-            ->setTableId('students-table')
+            ->setTableId('parents-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             ->dom('<"d-flex justify-content-between align-items-center mx-0 row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>t<"d-flex justify-content-between mx-0 row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>')
@@ -117,7 +95,9 @@ class StudentsDataTable extends DataTable
                 'responsive' => true,
                 'autoWidth' => false,
                 'lengthMenu' => [[10, 25, 50, 100, 500], ['10', '25', '50', '100', '500']],
+
                 'language' => $this->lang(),
+
             ]);
     }
 
@@ -134,12 +114,10 @@ class StudentsDataTable extends DataTable
             Column::make('first_name')->title(trans('general.First Name')),
             Column::make('last_name')->title(trans('general.Last Name')),
             Column::make('gender')->title(trans('general.gender')),
-            Column::make('city')->name('cities.title')->title(trans('general.city')),
-            Column::make('area')->title(trans('general.area')),
-            Column::make('telephone')->title(trans('general.telephone')),
-            Column::make('mother_name')->title(trans('general.mother')),
-            Column::make('father_name')->title(trans('general.father')),
-            Column::make('division')->name('divisions.title')->title(trans('general.division')),
+            Column::make('phone')->title(trans('general.phone')),
+            Column::make('job')->title(trans('general.job')),
+            Column::make('username')->title(trans('general.Username')),
+            Column::make('password')->title(trans('general.Password')),
             Column::computed('Action')->title(trans('general.options'))
                 ->exportable(false)
                 ->printable(false)
@@ -155,6 +133,6 @@ class StudentsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Students_' . date('YmdHis');
+        return 'DeactivatedParentsAccounts_' . date('YmdHis');
     }
 }

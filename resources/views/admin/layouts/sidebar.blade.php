@@ -57,7 +57,7 @@
                        </li>
                        
                        <li class="{{ (Request::is('admin/parents') || Request::is('admin/parents/*') ? 'active' : '') }}">
-                           <a class="d-flex align-items-center" href="dashboard-ecommerce.html">
+                           <a class="d-flex align-items-center" href="{{route('admin.parents')}}">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="eCommerce">
                                    {{ trans("general.Parents") }}
@@ -66,7 +66,7 @@
                        </li>
 
                        <li class="{{ (Request::is('admin/students') || Request::is('admin/students/*') ? 'active' : '') }}">
-                           <a class="d-flex align-items-center" href="dashboard-ecommerce.html">
+                           <a class="d-flex align-items-center" href="{{route('admin.students')}}">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate" data-i18n="eCommerce">
                                    {{ trans("general.students") }}

@@ -20,11 +20,13 @@ class CreateStudentsTable extends Migration
             $table->date('birth_date');
             $table->string('birth_place');
             $table->enum('gender', ['male', 'female']);
-            $table->string('city');
-            $table->string('street');
+            // $table->string('city');
+            $table->unsignedBigInteger('city_id');
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->string('area');
+            $table->tinyText('street');
             $table->string('phone');
-            $table->string('mobile');
+            $table->string('telephone');
             $table->string('emergency_phone');
             $table->string('emergency_kinship');
             $table->unsignedBigInteger('religion_id');

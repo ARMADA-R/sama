@@ -79,15 +79,37 @@ Route::group([
             
 
             
+            Route::get('parent/mother/search', [App\Http\Controllers\Admin\ParentsController::class, "mothersSearch"])->name('admin.parents.mother.search');
+            Route::get('parent/father/search', [App\Http\Controllers\Admin\ParentsController::class, "fathersSearch"])->name('admin.parents.father.search');
 
             Route::get('students', [App\Http\Controllers\Admin\StudentsController::class, "students"])->name('admin.students');;
-            // Route::get('users/create', [App\Http\Controllers\Admin\StudentsController::class, "showCreateAdminView"])->name('admin.users.create');
-            // Route::post('users/create', [App\Http\Controllers\Admin\StudentsController::class, "create"]);
-            // Route::get('users/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "showUpdateAdminView"])->name('admin.users.update');
-            // Route::post('users/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "update"]);
-            // Route::post('users/edit/{id}/password', [App\Http\Controllers\Admin\StudentsController::class, "updatePassword"])->name('admin.users.update.password');
-            // Route::post('users/edit/{id}/status', [App\Http\Controllers\Admin\StudentsController::class, "updateAccountStatus"])->name('admin.users.update.status');
-            
+            Route::get('students/create', [App\Http\Controllers\Admin\StudentsController::class, "showCreateStudentView"])->name('admin.students.create');
+            Route::post('students/create', [App\Http\Controllers\Admin\StudentsController::class, "create"]);
+            Route::get('students/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "showUpdateStudentView"])->name('admin.students.update');
+            Route::post('students/edit/{id}', [App\Http\Controllers\Admin\StudentsController::class, "update"]);
+            Route::post('students/edit/{id}/student', [App\Http\Controllers\Admin\StudentsController::class, "updateStudent"])->name('admin.students.update.student');
+            Route::post('students/edit/{id}/mother', [App\Http\Controllers\Admin\StudentsController::class, "updateMother"])->name('admin.students.update.mother');
+            Route::post('students/edit/{id}/father', [App\Http\Controllers\Admin\StudentsController::class, "updateFather"])->name('admin.students.update.father');
+            Route::post('students/edit/{id}/addressTransEmergency', [App\Http\Controllers\Admin\StudentsController::class, "updateAddress_Transportation_Emergency"])->name('admin.students.update.addressTransEmergency');
+            Route::post('students/edit/{id}/sequence', [App\Http\Controllers\Admin\StudentsController::class, "updateSequence"])->name('admin.students.update.sequence');
+            Route::post('students/edit/{id}/languages', [App\Http\Controllers\Admin\StudentsController::class, "updateLanguages"])->name('admin.students.update.languages');
+            Route::post('students/edit/{id}/health', [App\Http\Controllers\Admin\StudentsController::class, "updateHealth"])->name('admin.students.update.health');
+            Route::post('students/delete', [App\Http\Controllers\Admin\StudentsController::class, "delete"])->name('admin.students.delete');
+
+
+
+
+            Route::get('parents', [App\Http\Controllers\Admin\ParentsController::class, "parents"])->name('admin.parents');;
+            Route::get('parents/deactivated', [App\Http\Controllers\Admin\ParentsController::class, "deactivatedParents"])->name('admin.parents.deactivated');;
+            Route::get('parents/deactivated/excel', [App\Http\Controllers\Admin\ParentsController::class, "deactivatedParentsExcel"])->name('admin.parents.deactivated.excel');
+            Route::get('parents/create', [App\Http\Controllers\Admin\ParentsController::class, "showCreateParentView"])->name('admin.parents.create');
+            Route::post('parents/create', [App\Http\Controllers\Admin\ParentsController::class, "create"]);
+            Route::get('parents/edit/{id}', [App\Http\Controllers\Admin\ParentsController::class, "showUpdateParentView"])->name('admin.parents.update');
+            Route::post('parents/edit/{id}', [App\Http\Controllers\Admin\ParentsController::class, "update"]);
+  
+
+
+
 
 
             // Route::get('users/account/details/{id}', 'UsersManagerController@accountDetails')->name('admin.UserAccountDetails');

@@ -8,4 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class StudentLanguage extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'level',
+        'language_id',
+        'student_id',
+    ];
+
 }

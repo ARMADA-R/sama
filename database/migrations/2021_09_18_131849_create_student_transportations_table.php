@@ -19,7 +19,7 @@ class CreateStudentTransportationsTable extends Migration
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');;
             
-            $table->unsignedBigInteger('transportation_id');
+            $table->unsignedBigInteger('transportation_id')->nullable();
             $table->foreign('transportation_id')->references('id')->on('transportations')->onDelete('cascade');;
 
             $table->timestamps();

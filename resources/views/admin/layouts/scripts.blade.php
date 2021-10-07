@@ -45,6 +45,45 @@
         "toastClass": 'toastr'
     };
 </script>
+<script>
+    function json2array(json) {
+        if (typeof json == 'string') {
+            return (json);
+        }
+
+        var result = [];
+        var keys = Object.keys(json);
+        keys.forEach(function(key) {
+            if (json != null && typeof json == 'object') {
+                result.push(json2array(json[key]));
+            } else
+                result.push(json[key]);
+        });
+        return result;
+    }
+
+    function showErrors(data) {
+        if (Array.isArray(data)) {
+            data.forEach(element => {
+                showErrors(element)
+            });
+        } else {
+            toastr.error(data);
+        }
+    }
+
+    
+    function showSuccess(data) {
+        if (Array.isArray(data)) {
+            data.forEach(element => {
+                showSuccess(element)
+            });
+        } else if(data != '') {
+            toastr.success(data);
+        }
+    }
+
+</script>
 @include("admin.layouts.message")
 
 @stack('scripts')

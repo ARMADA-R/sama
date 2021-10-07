@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentTransportation extends Model
+class DeactivatedParentsAccount extends Model
 {
     use HasFactory;
 
@@ -15,9 +15,8 @@ class StudentTransportation extends Model
      * @var string[]
      */
     protected $fillable = [
-        'transportation_id',
-        'student_id',
+        'parent_id',
+        'username',
+        'password',
     ];
-
-
 }

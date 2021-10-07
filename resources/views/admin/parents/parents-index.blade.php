@@ -7,8 +7,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header border-bottom">
-                    <h4 class="card-title">{{ trans("general.students") }}</h4>
-                    <a href="{{ route('admin.students.create') }}" class="btn btn-outline-primary waves-effect">{{ trans("general.add_student") }}</a>
+                    <h4 class="card-title">{{ trans("general.parents") }}</h4>
+                    <div>
+                        <a href="{{ route('admin.parents.create') }}" class="btn btn-outline-primary waves-effect">{{ trans("general.add_parent") }}</a>
+                        <a href="{{ route('admin.parents.deactivated') }}" class="btn btn-outline-primary waves-effect">{{ trans("general.deactivated_accounts") }}</a>
+                    </div>
                 </div>
                 <div class="card-datatable">
                     {{ $dataTable->table([
@@ -35,12 +38,7 @@
 <script src="{{ url('design') }}/app-assets/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
 
 <script>
-    function changeAccStatusConfirmation() {
-        if (confirm(`{{ trans('general.Confirm Change Account Status') }}`)) {
-            return true;
-        }
-        return false;
-    }
+    
 </script>
 
 @endpush
@@ -48,10 +46,10 @@
 @push('header')
 
 <!-- BEGIN: Vendor CSS-->
-<link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/vendors-rtl.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/vendors-rtl.min.css"> -->
 <link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/tables/datatable/dataTables.bootstrap5.min.css">
 <link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/tables/datatable/responsive.bootstrap5.min.css">
-<link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url('design') }}/app-assets/vendors/css/pickers/flatpickr/flatpickr.min.css"> -->
 <!-- END: Vendor CSS-->
 
 <!-- BEGIN: Theme CSS-->

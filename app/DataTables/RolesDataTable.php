@@ -25,11 +25,11 @@ class RolesDataTable extends DataTable
             ->rawColumns([
                 'Action',
             ])
-            ->setRowId(function ($user) {
-                return 'row_' . $user->id;
+            ->setRowId(function ($record) {
+                return 'row_' . $record->id;
             })
-            ->editColumn('created_at', function ($user) {
-                return $user->created_at ? with(new Carbon($user->created_at))->format('Y-m-d H:i') : '';
+            ->editColumn('created_at', function ($record) {
+                return $record->created_at ? with(new Carbon($record->created_at))->format('Y-m-d H:i') : '';
             })
             ->addIndexColumn();
     }

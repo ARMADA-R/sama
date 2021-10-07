@@ -177,6 +177,7 @@ return [
 
         // Sama Service Providers... 
         Yajra\DataTables\DataTablesServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -231,6 +232,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+
+        // Sama Class Aliases... 
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];
