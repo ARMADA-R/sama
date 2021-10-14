@@ -9,6 +9,18 @@ use Illuminate\Support\Facades\DB;
 class Division extends Model
 {
     use HasFactory;
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'code',
+        'capacity',
+        'level_id',
+    ];
 
     public static function getDivisionStudentsByLevelId($level)
     {

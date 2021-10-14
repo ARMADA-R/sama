@@ -82,6 +82,17 @@
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
                     <div class="mb-1">
+                        <label class="form-label" for="stage">{{ trans('general.stage') }}</label>
+                        <select required name="stage" onchange="stageLevels(this.value)" class="form-select" id="stage">
+                            <option value="">--</option>
+                            @foreach($stages as $stage)
+                            <option value="{{ $stage->id }}" {{ old('stage')? ($stage->id == old('stage')? 'selected':'') : ($stage->id == $currentStage->id? 'selected':'')}}>{{ $stage->title }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="mb-1">
                         <label class="form-label" for="level_to_study">{{ trans('general.level_to_study') }}</label>
                         <select required name="level_to_study" class="form-select" id="level_to_study">
                             <option value="">--</option>
@@ -1278,6 +1289,44 @@
         } catch (error) {
             $("#update-health-overlay").hide();
         }
+    }
+
+    
+    function stageLevels(stage_id) {
+        console.log('stageLevels');
+        var jqxhr = $.ajax({
+                url: "{{route('admin.stage.levels')}}",
+                method: "GET",
+                timeout: 0,
+                data:{
+                    stage_id:stage_id
+                }
+            })
+            .done(function(response) {
+                setLevelsOptions(response.data);
+                console.log(response);
+            })
+            .fail(function(response) {
+                console.log(response);
+                toastr.error(response.responseJSON.msg, 'خطأ');
+            });
+
+    }
+
+
+    function setLevelsOptions(data) {
+        var levelSelect = $('#level_to_study');
+        levelSelect.html('');
+        levelSelect.append($('<option>', {
+            value: '',
+            text: '--'
+        }));
+        $.each(data, function(index, val) {
+            levelSelect.append($('<option>', {
+                value: val.id,
+                text: val.title
+            }));
+        });
     }
 </script>
 <!-- update-student-overlay

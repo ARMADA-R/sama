@@ -19,11 +19,9 @@ class CreateStudyMaterialsTable extends Migration
             $table->text('description');
             $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');
-            $table->unsignedBigInteger('stage_id');
-            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
             $table->integer('max_grade');
             $table->integer('min_grade');
-            $table->tinyText('attachment');
+            $table->tinyText('attachments')->nullable();
 
             $table->timestamps();
         });

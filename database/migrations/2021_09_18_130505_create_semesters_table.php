@@ -19,6 +19,8 @@ class CreateSemestersTable extends Migration
             $table->string('code');
             $table->date('start_date');
             $table->date('end_date');
+            $table->unsignedBigInteger('academic_year_id');
+            $table->foreign('academic_year_id')->references('id')->on('academic_years')->onDelete('cascade');
             $table->timestamps();
         });
     }

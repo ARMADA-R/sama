@@ -86,7 +86,7 @@ class RolesController extends Controller
 
     public function showUpdateForm($id)
     {
-        $this->authorize('view', Role::class);
+        // $this->authorize('view', Role::class);
         $role = Role::find($id);
 
         if ($role) {
@@ -107,7 +107,7 @@ class RolesController extends Controller
             // dd($permissionsAsGroups);
             return view('admin.roles.roles-edit', ['role' => $role, 'permissionsAsGroups' => $permissionsAsGroups]);
         } else {
-            return back()->with('success', trans('general.record_not_found'));
+            return back()->withErrors( trans('general.record_not_found'));
         }
     }
 
@@ -115,7 +115,7 @@ class RolesController extends Controller
 
     public function update(Request $request)
     {
-        $this->authorize('update', Role::class);
+        // $this->authorize('update', Role::class);
         $data = ($request->all());
         Validator::make($data, [
             'id' => ['required'],

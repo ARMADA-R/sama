@@ -56,7 +56,13 @@
         }
 
         .navigation {
-            font-family: unset;
+            font-family: unset !important;
+            font-weight: 500 !important;
+            font-size: 1rem !important;
+        }
+
+        .navigation-header {
+            font-family: unset !important;
             font-weight: 500 !important;
             font-size: 1rem !important;
         }

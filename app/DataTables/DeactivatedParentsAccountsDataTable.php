@@ -22,7 +22,7 @@ class DeactivatedParentsAccountsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('Action', 'admin.parents.action')
+            // ->addColumn('Action', 'admin.parents.action')
             ->rawColumns([
                 'Action',
             ])
@@ -117,13 +117,7 @@ class DeactivatedParentsAccountsDataTable extends DataTable
             Column::make('phone')->title(trans('general.phone')),
             Column::make('job')->title(trans('general.job')),
             Column::make('username')->title(trans('general.Username')),
-            Column::make('password')->title(trans('general.Password')),
-            Column::computed('Action')->title(trans('general.options'))
-                ->exportable(false)
-                ->printable(false)
-                ->addClass('text-center')
-                ->searchable(false),
-        ];
+                ];
     }
 
     /**

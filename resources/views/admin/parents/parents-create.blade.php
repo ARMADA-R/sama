@@ -22,7 +22,7 @@
                         <input required type="text" name="lastName" class="form-control" id="lname" placeholder="Yaseen" value="{{old('lastName')? old('lastName') : ''}}">
                     </div>
                 </div>
-               
+
                 <div class="col-xl-4 col-md-6 col-12">
                     <div class="mb-1">
                         <label class="form-label" for="job">{{ trans('general.job') }}</label>
@@ -35,7 +35,17 @@
                         <input required type="text" name="phone" class="form-control" id="phone" value="{{old('phone')? old('phone') : ''}}">
                     </div>
                 </div>
-                
+                <div class="col-xl-4 col-md-6 col-12">
+                    <div class="mb-1">
+                        <label class="form-label" for="genderSelect">{{ trans('general.gender') }}</label>
+                        <select required name="gender" class="form-select" id="genderSelect">
+                            <option value="">--</option>
+                            <option value="male" {{ old('gender')? ('male' == old('gender')? 'selected':'') : ''}}>{{ trans('general.male') }}</option>
+                            <option value="female" {{ old('gender')? ('female' == old('gender')? 'selected':'') : ''}}>{{ trans('general.female') }}</option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="card-footer">

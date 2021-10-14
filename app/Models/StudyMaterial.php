@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class StudyMaterial extends Model
 {
     use HasFactory;
+    
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'title',
+        'min_grade',
+        'max_grade',
+        'description',
+        'level_id',
+        'attachments',
+    ];
 }

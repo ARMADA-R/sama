@@ -19,9 +19,6 @@ class CreateDivisionsTable extends Migration
             $table->string('code');
             $table->unsignedBigInteger('level_id');
             $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');;
-            $table->unsignedBigInteger('semester_id');
-            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade');;
-            $table->enum('days', ['sat', 'sun', 'mon', 'tue', 'wed', 'thu', 'fri']);
             $table->timestamps();
         });
     }

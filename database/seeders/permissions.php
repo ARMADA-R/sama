@@ -14,15 +14,34 @@ class permissions extends Seeder
      */
     public function run()
     {
-        $a = ['users','roles',  'courses','languages','reports','certificates','search'];
-        $b = ['browse','edit','delete','add','view'];
-        $c =['access dashboard'];
+        $a = [
+            'users',
+            'roles',
+            'courses',
+            'exam forms',
+            'exam tables',
+            'stages',
+            'divisions',
+            'levels',
+            'classes',
+            'students financials records',
+            'semesters',
+            'school programs',
+            'attendance',
+            'students notes',
+            'grades',
+            'academic years',
+        ];
+        $b = ['browse', 'edit', 'delete', 'add', 'view'];
+        $c = [
+            'access dashboard',
+        ];
 
         foreach ($a as $Aval) {
             foreach ($b as $Bval) {
                 Permission::create([
-                    'title' => $Bval .' '. $Aval,
-                    'code' => $Bval .'-'. $Aval,
+                    'title' => $Bval . ' ' . $Aval,
+                    'code' => $Bval . '-' . str_replace(' ', '-', $Aval),
                     'group' => $Aval
                 ]);
             }
@@ -30,7 +49,7 @@ class permissions extends Seeder
         foreach ($c as $Cval) {
             Permission::create([
                 'title' => $Cval,
-                'code' => str_replace(' ','-' ,$Cval) ,
+                'code' => str_replace(' ', '-', $Cval),
                 'group' => 'general'
             ]);
         }

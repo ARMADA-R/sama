@@ -78,22 +78,31 @@
                 </div>
                 <div class="col-xl-3 col-md-6 col-12">
                     <div class="mb-1">
-                        <label class="form-label" for="level_to_study">{{ trans('general.level_to_study') }}</label>
-                        <select required name="level_to_study" class="form-select" id="level_to_study">
+                        <label class="form-label" for="stage">{{ trans('general.stage') }}</label>
+                        <select required name="stage" onchange="stageLevels(this.value)" class="form-select" id="stage">
                             <option value="">--</option>
-                            @foreach($levels as $level)
-                            <option value="{{ $level->id }}" {{ old('level_to_study')? ($level->id == old('level_to_study')? 'selected':'') : ''}}>{{ $level->title }}</option>
+                            @foreach($stages as $stage)
+                            <option value="{{ $stage->id }}" {{ old('stage')? ($stage->id == old('stage')? 'selected':'') : ''}}>{{ $stage->title }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-                <div class="col-xl col-md-6 col-12">
+                <div class="col-xl-3 col-md-6 col-12">
+                    <div class="mb-1">
+                        <label class="form-label" for="level_to_study">{{ trans('general.level_to_study') }}</label>
+                        <select required name="level_to_study" class="form-select" id="level_to_study">
+                            <option value="">--</option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl col-md col-12">
                     <div class="mb-1">
                         <label class="form-label" for="phone">{{ trans('general.phone') }}</label>
                         <input required type="text" name="phone" class="form-control" id="phone" value="{{old('phone')? old('phone') : ''}}">
                     </div>
                 </div>
-                <div class="col-xl col-md-6 col-12">
+                <div class="col-xl col-md col-12">
                     <div class="mb-1">
                         <label class="form-label" for="telephone">{{ trans('general.telephone') }}</label>
                         <input required type="text" name="telephone" class="form-control" id="telephone" value="{{old('telephone')? old('telephone') : ''}}">
@@ -737,6 +746,42 @@
         });
         closestRadio.attr('checked', true);
         console.log(closestRadio);
+    }
+
+
+    function stageLevels(stage_id) {
+        var jqxhr = $.ajax({
+                url: "{{route('admin.stage.levels')}}",
+                method: "GET",
+                timeout: 0,
+                data:{
+                    stage_id:stage_id
+                }
+            })
+            .done(function(response) {
+                setLevelsOptions(response.data);
+                console.log(response);
+            })
+            .fail(function(response) {
+                console.log(response);
+                toastr.error(response.responseJSON.msg, 'خطأ');
+            });
+
+    }
+
+    function setLevelsOptions(data) {
+        var levelSelect = $('#level_to_study');
+        levelSelect.html('');
+        levelSelect.append($('<option>', {
+            value: '',
+            text: '--'
+        }));
+        $.each(data, function(index, val) {
+            levelSelect.append($('<option>', {
+                value: val.id,
+                text: val.title
+            }));
+        });
     }
 </script>
 

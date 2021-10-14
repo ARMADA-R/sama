@@ -70,6 +70,6 @@
 
 <!-- <script>
     $(".alert").delay(15000).slideUp(200, function() {
-        $(this).alert('close');
+        $(this).alert('close')
     });
 </script> -->

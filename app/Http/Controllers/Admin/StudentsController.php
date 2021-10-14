@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\StudentsDataTable;
 use App\Http\Controllers\Controller;
-use App\Models\cities;
+use App\Models\Cities;
 use App\Models\Division;
 use App\Models\Language;
 use App\Models\Level;
@@ -12,6 +12,7 @@ use App\Models\Nationality;
 use App\Models\Parents;
 use App\Models\Religion;
 use App\Models\Role;
+use App\Models\Stage;
 use App\Models\Student;
 use App\Models\StudentHealthRecords;
 use App\Models\StudentLanguage;
@@ -35,14 +36,15 @@ class StudentsController extends Controller
 
     public function showCreateStudentView()
     {
-        $roles = Role::all();
+        // $roles = Role::all();
         $nationalities = Nationality::all();
         $religions = Religion::all();
         $levels = Level::all();
         $languages = Language::all();
+        $stages = Stage::all();
         $cities = Cities::orderBy('title')->get();
 
-        return view('admin.students.students-create', ['cities' => $cities, 'languages' => $languages, 'nationalities' => $nationalities, 'religions' => $religions, 'levels' => $levels,]);
+        return view('admin.students.students-create', ['stages' => $stages, 'cities' => $cities, 'languages' => $languages, 'nationalities' => $nationalities, 'religions' => $religions, 'levels' => $levels,]);
     }
 
     public function create(Request $request)
@@ -243,10 +245,14 @@ class StudentsController extends Controller
 
     public function showUpdateStudentView($id)
     {
-        $roles = Role::all();
+        // $roles = Role::all();
+        $validator = Validator::make(['id' => $id], [
+            'id' => ['required', 'max:190', 'exists:App\Models\Student,id'],
+        ], [], []);
+
         $nationalities = Nationality::all();
         $religions = Religion::all();
-        $levels = Level::select('levels.*')->distinct()->join('divisions', 'divisions.level_id', '=', 'levels.id')->get();
+        
         $languages = Language::all();
         $cities = Cities::orderBy('title')->get();
         $student = Student::select(
@@ -272,20 +278,26 @@ class StudentsController extends Controller
         )
             ->leftJoin('divisions', 'divisions.id', '=', 'students.division_id')
             ->leftJoin('student_transportations', 'student_transportations.student_id', '=', 'students.id')
-            ->where("students.id", $id)->get();
+            ->where("students.id", $id)->first();
 
-        $mother = Parents::find($student[0]->mother_id);
-        $father = Parents::find($student[0]->father_id);
-        $schoolSequence = StudentLevels::where('student_id', $student[0]->student_id)->get();
-        $studentLanguages = StudentLanguage::where('student_id', $student[0]->student_id)->get();
-        $studentHealthRecords = StudentHealthRecords::where('student_id', $student[0]->student_id)->get();
+        $stages = Stage::all();
+        $currentStage = Level::select('stage_id as id')->where('id',$student->level_id)->first();
+        $levels = Level::select('levels.*')->where('stage_id', $currentStage->id)->distinct()
+        ->join('divisions', 'divisions.level_id', '=', 'levels.id')->get();
+        $mother = Parents::find($student->mother_id);
+        $father = Parents::find($student->father_id);
+        $schoolSequence = StudentLevels::where('student_id', $student->student_id)->get();
+        $studentLanguages = StudentLanguage::where('student_id', $student->student_id)->get();
+        $studentHealthRecords = StudentHealthRecords::where('student_id', $student->student_id)->get();
         $studentNationalities = StudentNationality::where('student_id', $id)->get();
         $studentNationalitiesIDs = [];
         foreach ($studentNationalities as $value) {
             $studentNationalitiesIDs[] = $value->nationality_id;
         }
         return view('admin.students.students-edit', [
-            'student' => $student[0],
+            'stages' => $stages,
+            'currentStage' => $currentStage,
+            'student' => $student,
             'mother' => $mother,
             'father' => $father,
             'cities' => $cities,
