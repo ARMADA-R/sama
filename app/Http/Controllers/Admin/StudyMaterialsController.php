@@ -14,21 +14,21 @@ class StudyMaterialsController extends Controller
 {
     public function studyMaterials(StudyMaterialsDataTable $studyMaterialsDataTable)
     {
-        // $this->authorize('viewAny', StudyMaterial::class);
+        $this->authorize('viewAny', StudyMaterial::class);
         return $studyMaterialsDataTable->render('admin.study-materials.study-materials-index');
     }
 
 
     public function showCreateView()
     {
-        // $this->authorize('create', StudyMaterial::class);
+        $this->authorize('create', StudyMaterial::class);
         $stages = Stage::all();
         return view('admin.study-materials.study-materials-create', ['stages' => $stages]);
     }
 
     public function create(Request $request)
     {
-        // $this->authorize('create', StudyMaterial::class);
+        $this->authorize('create', StudyMaterial::class);
         $data = ($request->all());
         $validatedData = Validator::make($data, [
             'title' => ['required', 'max:255'],
@@ -50,7 +50,7 @@ class StudyMaterialsController extends Controller
 
     public function showUpdateView($id)
     {
-        // $this->authorize('view', StudyMaterial::class);
+        $this->authorize('view', StudyMaterial::class);
 
         Validator::make(['id' => $id], [
             'id' => ['required', 'max:255', 'exists:App\Models\StudyMaterial,id'],
@@ -65,7 +65,7 @@ class StudyMaterialsController extends Controller
 
     public function update(Request $request)
     {
-        // $this->authorize('update', StudyMaterial::class);
+        $this->authorize('update', StudyMaterial::class);
 
         $data = ($request->all());
         $validatedData = Validator::make($data, [
@@ -100,7 +100,7 @@ class StudyMaterialsController extends Controller
 
     public function delete(Request $request)
     {
-        // $this->authorize('delete', StudyMaterial::class);
+        $this->authorize('delete', StudyMaterial::class);
         $data = $request->all();
         Validator::make($data, [
             'studyMaterial_id' => ['required', 'max:190', 'exists:App\Models\StudyMaterial,id'],

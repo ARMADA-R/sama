@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('content')
 
-<form action="{{ route('admin.studyMaterials.update', $studyMaterial->id) }}" method="post">
+<form action="{{ route('admin.studyMaterials.update', $studyMaterial->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="id" value="{{$studyMaterial->id}}">
     <div class="card">

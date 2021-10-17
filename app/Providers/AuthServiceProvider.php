@@ -8,6 +8,7 @@ use App\Models\Level;
 use App\Models\Role;
 use App\Models\Semester;
 use App\Models\Stage;
+use App\Models\StudyMaterial;
 use App\Models\User;
 use App\Policies\AcademicYearPolicy;
 use App\Policies\DivisionPolicy;
@@ -15,6 +16,7 @@ use App\Policies\LevelPolicy;
 use App\Policies\RolePolicy;
 use App\Policies\SemesterPolicy;
 use App\Policies\StagePolicy;
+use App\Policies\StudyMaterialPolicy;
 use App\Policies\UserPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -35,6 +37,7 @@ class AuthServiceProvider extends ServiceProvider
         Semester::class => SemesterPolicy::class,
         Stage::class => StagePolicy::class,
         AcademicYear::class => AcademicYearPolicy::class,
+        StudyMaterial::class => StudyMaterialPolicy::class,
     ];
 
     /**

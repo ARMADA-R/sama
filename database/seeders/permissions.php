@@ -15,26 +15,27 @@ class permissions extends Seeder
     public function run()
     {
         $a = [
-            'users',
-            'roles',
-            'courses',
-            'exam forms',
-            'exam tables',
-            'stages',
-            'divisions',
-            'levels',
-            'classes',
-            'students financials records',
-            'semesters',
-            'school programs',
-            'attendance',
-            'students notes',
-            'grades',
-            'academic years',
+            // 'users',
+            // 'roles',
+            // 'courses',
+            // 'exam forms',
+            // 'exam tables',
+            // 'stages',
+            // 'divisions',
+            // 'levels',
+            // 'classes',
+            // 'students financials records',
+            // 'semesters',
+            // 'school programs',
+            // 'attendance',
+            // 'students notes',
+            // 'grades',
+            // 'academic years',
+            // 'study materials',
         ];
         $b = ['browse', 'edit', 'delete', 'add', 'view'];
         $c = [
-            'access dashboard',
+            // 'access dashboard',
         ];
 
         foreach ($a as $Aval) {
