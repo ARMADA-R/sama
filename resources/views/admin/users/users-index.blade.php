@@ -28,12 +28,12 @@
 
 @push('scripts')
 
-{!! $dataTable->scripts() !!}
+
 <script src="{{ url('design') }}/app-assets/vendors/js/tables/datatable/jquery.dataTables.min.js"></script>
 <script src="{{ url('design') }}/app-assets/vendors/js/tables/datatable/dataTables.bootstrap5.min.js"></script>
 <script src="{{ url('design') }}/app-assets/vendors/js/tables/datatable/dataTables.responsive.min.js"></script>
 <script src="{{ url('design') }}/app-assets/vendors/js/tables/datatable/responsive.bootstrap5.js"></script>
-
+{!! $dataTable->scripts() !!}
 <script>
     function changeAccStatusConfirmation() {
         if (confirm(`{{ trans('general.Confirm Change Account Status') }}`)) {

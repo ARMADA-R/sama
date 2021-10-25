@@ -44,6 +44,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'headmaster' => [
+            'driver' => 'session',
+            'provider' => 'headmasters',
+        ],
+        'guidance' => [
+            'driver' => 'session',
+            'provider' => 'guidance_counselor',
+        ],
     ],
 
     /*
@@ -67,6 +75,14 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'headmasters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Headmaster::class,
+        ],
+        'guidance_counselor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\GuidanceCounselor::class,
         ],
         'parents' => [
             'driver' => 'eloquent',
@@ -103,6 +119,18 @@ return [
         ],
         'parents' => [
             'provider' => 'parents',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'headmasters' => [
+            'provider' => 'headmasters',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'guidance_counselor' => [
+            'provider' => 'guidance_counselor',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

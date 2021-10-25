@@ -53,9 +53,10 @@ class DivisionsController extends Controller
             'id' => ['required', 'max:255', 'exists:App\Models\Division,id'],
         ], [], [])->validate();
         $division = Division::find($id);
-        $levels = Level::all();
-
-        return view('admin.divisions.divisions-edit', ['division' => $division, 'levels' => $levels]);
+        $divisionLevel = Level::where('id', $division->level_id)->first();
+        $levels = Level::where('stage_id', $divisionLevel->stage_id)->get();
+        $stages = Stage::all();
+        return view('admin.divisions.divisions-edit', ['divisionLevel' => $divisionLevel, 'stages' => $stages, 'division' => $division, 'levels' => $levels]);
     }
 
     public function update(Request $request)

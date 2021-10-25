@@ -37,7 +37,7 @@
                @can('viewAny', App\Models\User::class)
                <li class=" nav-item font-tajawal">
                    <a class="d-flex align-items-center" href="index.html">
-                       <i data-feather='users'></i>
+                       <i class="fas fa-users-cog"></i>
                        <span class="menu-title text-truncate" data-i18n="Dashboards">
                            {{ trans("general.Users and Accounts") }}
                        </span>
@@ -55,7 +55,7 @@
                                </span>
                            </a>
                        </li>
-
+                       <!-- 
                        <li class="{{ (Request::is('admin/headmasters')  || Request::is('admin/headmasters/*')? 'active' : '') }}">
                            <a class="d-flex align-items-center" href="{{route('admin.headmasters')}}">
                                <i data-feather="circle"></i>
@@ -72,7 +72,7 @@
                                    {{ trans("general.guidance_counselors") }}
                                </span>
                            </a>
-                       </li>
+                       </li> -->
 
                        <li class="{{ (Request::is('admin/parents') || Request::is('admin/parents/*') ? 'active' : '') }}">
                            <a class="d-flex align-items-center" href="{{route('admin.parents')}}">
@@ -83,19 +83,19 @@
                            </a>
                        </li>
 
-                       <li class="{{ (Request::is('admin/students') || Request::is('admin/students/*') ? 'active' : '') }}">
+                       <!-- <li class="{{ (Request::is('admin/students') || Request::is('admin/students/*') ? 'active' : '') }}">
                            <a class="d-flex align-items-center" href="{{route('admin.students')}}">
                                <i data-feather="circle"></i>
                                <span class="menu-item text-truncate">
                                    {{ trans("general.students") }}
                                </span>
                            </a>
-                       </li>
+                       </li> -->
                    </ul>
                </li>
                @endcan
                @can('viewAny', App\Models\Role::class)
-               <li class=" nav-item">
+               <!-- <li class=" nav-item">
                    <a class="d-flex align-items-center" href="#">
                        <i data-feather="shield"></i>
                        <span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">
@@ -111,25 +111,156 @@
                                </span>
                            </a>
                        </li>
-                       <!-- <li>
-                           <a class="d-flex align-items-center" href="app-access-permission.html">
+                   </ul>
+               </li> -->
+               @endcan
+               <li class=" nav-item">
+                   <a class="d-flex align-items-center" href="#">
+                       <i class="fas fa-layer-group"></i>
+                       <span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">
+                           {{ trans("general.schools_structure") }}
+                       </span>
+                   </a>
+                   <ul class="menu-content">
+                       @can('viewAny', App\Models\Stage::class)
+                       <li class=" nav-item {{ (Request::is('admin/stages') || Request::is('admin/stages/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.stages')}}">
                                <i data-feather="circle"></i>
-                               <span class="menu-item text-truncate" data-i18n="Permission">
-                                   Permission
-                                </span>
-                            </a>
-                       </li> -->
+                               <span class="menu-title text-truncate">{{trans('general.stages')}}</span>
+                           </a>
+                       </li>
+                       @endcan
+                       @can('viewAny', App\Models\Level::class)
+                       <li class=" nav-item {{ (Request::is('admin/levels') || Request::is('admin/levels/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.levels')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.levels')}}</span>
+                           </a>
+                       </li>
+                       @endcan
+                       @can('viewAny', App\Models\Division::class)
+                       <li class=" nav-item {{ (Request::is('admin/divisions') || Request::is('admin/divisions/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.divisions')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.divisions')}}</span>
+                           </a>
+                       </li>
+                       @endcan
+
                    </ul>
                </li>
-               @endcan
+
+               <li class=" nav-item">
+                   <a class="d-flex align-items-center" href="#">
+                       <i class="fas fa-book"></i>
+                       <span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">
+                           {{ trans("general.curriculum") }}
+                       </span>
+                   </a>
+                   <ul class="menu-content">
+
+                       <li class=" nav-item {{ (Request::is('admin/studyMaterials') || Request::is('admin/studyMaterials/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.studyMaterials')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.studyMaterials')}}</span>
+                           </a>
+                       </li>
+
+                       <li class=" nav-item {{ (Request::is('admin/worksheets') || Request::is('admin/worksheets/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.worksheets')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.worksheets')}}</span>
+                           </a>
+                       </li>
+
+
+                       <li class=" nav-item {{ (Request::is('admin/exams') || Request::is('admin/exams/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.exams')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.exams')}}</span>
+                           </a>
+                       </li>
+
+
+                       <li class=" nav-item {{ (Request::is('admin/weeklyProgram') || Request::is('admin/weeklyProgram/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.weeklyProgram')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.weeklyProgram')}}</span>
+                           </a>
+                       </li>
+
+                   </ul>
+               </li>
+
+               <li class=" nav-item {{ (Request::is('admin/students') || Request::is('admin/students/*') ? 'active' : '') }}">
+                   <a class="d-flex align-items-center" href="{{route('admin.students')}}">
+                       <i class="fas fa-users"></i>
+                       <span class="menu-title text-truncate">{{trans('general.students')}}</span>
+                   </a>
+               </li>
+
+
+
+               <li class=" nav-item {{ (Request::is('admin/notes') || Request::is('admin/notes/*') ? 'active' : '') }}">
+                   <a class="d-flex align-items-center" href="{{route('admin.notes')}}">
+                       <i class="far fa-sticky-note"></i>
+                       <span class="menu-title text-truncate">{{trans('general.notes')}}</span>
+                   </a>
+               </li>
+
+
+               <li class=" nav-item {{ (Request::is('admin/announcements') || Request::is('admin/announcements/*') ? 'active' : '') }}">
+                   <a class="d-flex align-items-center" href="{{route('admin.announcements')}}">
+                       <i class="fas fa-bullhorn"></i>
+                       <span class="menu-title text-truncate">{{trans('general.announcements')}}</span>
+                   </a>
+               </li>
+
+
+               <li class=" nav-item {{ (Request::is('admin/settings') || Request::is('admin/settings/*') ? 'active' : '') }}">
+                   <a class="d-flex align-items-center" href="{{route('admin.settings')}}">
+                       <i class="fas fa-cogs"></i>
+                       <span class="menu-title text-truncate">{{trans('general.settings')}}</span>
+                   </a>
+               </li>
+
+
+               <li class=" nav-item">
+                   <a class="d-flex align-items-center" href="#">
+                       <i class="fas fa-bus-alt"></i>
+                       <span class="menu-title text-truncate" data-i18n="Roles &amp; Permission">
+                           {{ trans("general.transportation") }}
+                       </span>
+                   </a>
+                   <ul class="menu-content">
+
+                       <li class=" nav-item {{ (Request::is('admin/buses') || Request::is('admin/buses/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.buses')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.buses')}}</span>
+                           </a>
+                       </li>
+
+                       <li class=" nav-item {{ (Request::is('admin/drivers') || Request::is('admin/drivers/*') ? 'active' : '') }}">
+                           <a class="d-flex align-items-center" href="{{route('admin.drivers')}}">
+                               <i data-feather="circle"></i>
+                               <span class="menu-title text-truncate">{{trans('general.drivers')}}</span>
+                           </a>
+                       </li>
+
+                   </ul>
+               </li>
+
+
                @can('viewAny', App\Models\Role::class)
-               <li class="navigation-header ">
+               <!-- <li class="navigation-header ">
                    <span>
-                       {{trans('general.schools_structure')}}
+                       Title
                    </span>
                    <i data-feather="more-horizontal"></i>
-               </li>
+               </li> -->
                @endcan
+               <!-- 
                @can('viewAny', App\Models\Semester::class)
                <li class=" nav-item {{ (Request::is('admin/semesters') || Request::is('admin/semesters/*') ? 'active' : '') }}">
                    <a class="d-flex align-items-center" href="{{route('admin.semesters')}}">
@@ -176,7 +307,7 @@
                        <i data-feather='layers'></i>
                        <span class="menu-title text-truncate">{{trans('general.studyMaterials')}}</span>
                    </a>
-               </li>
+               </li> -->
            </ul>
        </div>
    </div>

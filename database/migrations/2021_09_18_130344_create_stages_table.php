@@ -17,8 +17,8 @@ class CreateStagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('code');
-            $table->unsignedBigInteger('headmaster_id')->nullable();
-            $table->foreign('headmaster_id')->references('id')->on('headmasters');
+            // $table->unsignedBigInteger('headmaster_id')->nullable();
+            // $table->foreign('headmaster_id')->references('id')->on('headmasters');
             
             $table->timestamps();
         });

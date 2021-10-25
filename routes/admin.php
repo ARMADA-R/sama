@@ -72,7 +72,7 @@ Route::group([
             Route::get('users', [App\Http\Controllers\Admin\UsersController::class, "users"])->name('admin.users');;
             Route::get('users/create', [App\Http\Controllers\Admin\UsersController::class, "showCreateAdminView"])->name('admin.users.create');
             Route::post('users/create', [App\Http\Controllers\Admin\UsersController::class, "create"]);
-            Route::get('users/edit/{id}', [App\Http\Controllers\Admin\UsersController::class, "showUpdateAdminView"])->name('admin.users.update');
+            Route::get('users/edit/{id}', [App\Http\Controllers\Admin\UsersController::class, "getUserPermissions"])->name('admin.users.update');
             Route::post('users/edit/{id}', [App\Http\Controllers\Admin\UsersController::class, "update"]);
             Route::post('users/edit/{id}/password', [App\Http\Controllers\Admin\UsersController::class, "updatePassword"])->name('admin.users.update.password');
             Route::post('users/edit/{id}/status', [App\Http\Controllers\Admin\UsersController::class, "updateAccountStatus"])->name('admin.users.update.status');
@@ -205,19 +205,24 @@ Route::group([
 
 
 
-            Route::get('studyMaterials', [App\Http\Controllers\Admin\StudyMaterialsController::class, "studyMaterials"])->name('admin.studyMaterials');;
+            Route::get('studyMaterials', [App\Http\Controllers\Admin\StudyMaterialsController::class, "studyMaterials"])->name('admin.studyMaterials');
             Route::get('studyMaterials/create', [App\Http\Controllers\Admin\StudyMaterialsController::class, "showCreateView"])->name('admin.studyMaterials.create');
             Route::post('studyMaterials/create', [App\Http\Controllers\Admin\StudyMaterialsController::class, "create"]);
             Route::get('studyMaterials/edit/{id}', [App\Http\Controllers\Admin\StudyMaterialsController::class, "showUpdateView"])->name('admin.studyMaterials.update');
             Route::post('studyMaterials/edit/{id}', [App\Http\Controllers\Admin\StudyMaterialsController::class, "update"]);
             Route::post('studyMaterials/delete', [App\Http\Controllers\Admin\StudyMaterialsController::class, "delete"])->name('admin.studyMaterials.delete');
-
-
-
-
+            
+            
+            Route::get('worksheets', [App\Http\Controllers\Admin\WorksheetsController::class, "worksheets"])->name('admin.worksheets');
+            Route::get('exams', [App\Http\Controllers\Admin\ExamsController::class, "exams"])->name('admin.exams');
+            Route::get('weeklyProgram', [App\Http\Controllers\Admin\WeeklyProgramController::class, "weeklyProgram"])->name('admin.weeklyProgram');
+            Route::get('notes', [App\Http\Controllers\Admin\NotesController::class, "notes"])->name('admin.notes');
+            Route::get('announcements', [App\Http\Controllers\Admin\AnnouncementsController::class, "announcements"])->name('admin.announcements');
+            Route::get('settings', [App\Http\Controllers\Admin\SettingsController::class, "settings"])->name('admin.settings');
+            Route::get('buses', [App\Http\Controllers\Admin\BusesController::class, "buses"])->name('admin.buses');
+            Route::get('drivers', [App\Http\Controllers\Admin\DriversController::class, "drivers"])->name('admin.drivers');
 
             
-            Route::get('test', 'TestController@test')->name('admin.test');
             Route::get('/', function () {
                 return view('admin.home');
             })->name('admin.home');

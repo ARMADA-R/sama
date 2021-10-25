@@ -24,7 +24,6 @@
                 height: 14
             });
         }
-
     });
     toastr.options = {
         "closeButton": false,
@@ -72,17 +71,79 @@
         }
     }
 
-    
+
     function showSuccess(data) {
         if (Array.isArray(data)) {
             data.forEach(element => {
                 showSuccess(element)
             });
-        } else if(data != '') {
+        } else if (data != '') {
             toastr.success(data);
         }
     }
 
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+        let expires = "expires=" + d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+
+    function getCookie(cname) {
+        let name = cname + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+
+    console.log(document.cookie);
+    // setCookie('darkMood', 1, 365);
+
+    // if (getCookie('darkMood')) {
+
+    //     var currentLayout = getCurrentLayout(),
+    //         switchToLayout = '',
+    //         prevLayout = localStorage.getItem(dataLayout + '-prev-skin', currentLayout);
+
+    //     // If currentLayout is not dark layout
+    //     if (currentLayout !== 'dark-layout') {
+    //         // Switch to dark
+    //         switchToLayout = 'dark-layout';
+    //     } else {
+    //         // Switch to light
+    //         // switchToLayout = prevLayout ? prevLayout : 'light-layout';
+    //         if (currentLayout === prevLayout) {
+    //             switchToLayout = 'light-layout';
+    //         } else {
+    //             switchToLayout = prevLayout ? prevLayout : 'light-layout';
+    //         }
+    //     }
+    //     // Set Previous skin in local db
+    //     localStorage.setItem(dataLayout + '-prev-skin', currentLayout);
+    //     // Set Current skin in local db
+    //     localStorage.setItem(dataLayout + '-current-skin', switchToLayout);
+
+    //     // Call set layout
+    //     setLayout(switchToLayout);
+
+    //     // ToDo: Customizer fix
+    //     $('.horizontal-menu .header-navbar.navbar-fixed').css({
+    //         background: 'inherit',
+    //         'box-shadow': 'inherit'
+    //     });
+    //     $('.horizontal-menu .horizontal-menu-wrapper.header-navbar').css('background', 'inherit');
+
+    // }
+    // console.log(getCookie('darkMood'));
 </script>
 @include("admin.layouts.message")
 

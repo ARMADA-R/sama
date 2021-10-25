@@ -43,69 +43,69 @@
     </div>
 
     <div class="card">
-  <div class="card-header border-bottom">
-    <h4 class="card-title">{{ trans("general.Change Password")}}</h4>
-  </div>
-  <div class="card-body pt-1">
-    <!-- form -->
-    <form class="validate-form" novalidate="novalidate">
-      <div class="row">
-        <div class="col-12 col-sm-6 mb-1">
-          <label class="form-label" for="account-old-password">{{ trans("general.Current password")}}</label>
-          <div class="input-group form-password-toggle input-group-merge">
-            <input type="password" class="form-control" id="account-old-password" name="password" placeholder="{{ trans("general.Enter current password")}}" data-msg="Please current password">
-            <div class="input-group-text cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
+      <div class="card-header border-bottom">
+        <h4 class="card-title">{{ trans("general.Change Password")}}</h4>
+      </div>
+      <div class="card-body pt-1">
+        <!-- form -->
+        <form class="validate-form" novalidate="novalidate">
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="account-old-password">{{ trans("general.Current password")}}</label>
+              <div class="input-group form-password-toggle input-group-merge">
+                <input type="password" class="form-control" id="account-old-password" name="password" placeholder="{{ trans("general.Enter current password")}}" data-msg="Please current password">
+                <div class="input-group-text cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 col-sm-6 mb-1">
-          <label class="form-label" for="account-new-password">{{ trans("general.New Password")}}</label>
-          <div class="input-group form-password-toggle input-group-merge">
-            <input type="password" id="account-new-password" name="new-password" class="form-control" placeholder="{{ trans("general.Enter new password")}}">
-            <div class="input-group-text cursor-pointer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
+          <div class="row">
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="account-new-password">{{ trans("general.New Password")}}</label>
+              <div class="input-group form-password-toggle input-group-merge">
+                <input type="password" id="account-new-password" name="new-password" class="form-control" placeholder="{{ trans("general.Enter new password")}}">
+                <div class="input-group-text cursor-pointer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 mb-1">
+              <label class="form-label" for="account-retype-new-password">{{ trans("general.Retype New Password")}}</label>
+              <div class="input-group form-password-toggle input-group-merge">
+                <input type="password" class="form-control" id="account-retype-new-password" name="confirm-new-password" placeholder="{{ trans("general.Confirm your new password")}}">
+                <div class="input-group-text cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg></div>
+              </div>
+            </div>
+            <div class="col-12">
+              <p class="fw-bolder">{{ trans("general.Password requirements:")}}</p>
+              <ul class="ps-1 ms-25">
+                <li class="mb-50">{{ trans("general.Minimum 8 characters long - the more, the better")}}</li>
+                <li class="mb-50">{{ trans("general.At least one lowercase character")}}</li>
+                <li>{{ trans("general.At least one number, symbol, or whitespace character")}}</li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary me-1 mt-1 waves-effect waves-float waves-light">{{ trans("general.Save changes")}}</button>
+              <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect">{{ trans("general.Discard")}}</button>
             </div>
           </div>
-        </div>
-        <div class="col-12 col-sm-6 mb-1">
-          <label class="form-label" for="account-retype-new-password">{{ trans("general.Retype New Password")}}</label>
-          <div class="input-group form-password-toggle input-group-merge">
-            <input type="password" class="form-control" id="account-retype-new-password" name="confirm-new-password" placeholder="{{ trans("general.Confirm your new password")}}">
-            <div class="input-group-text cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg></div>
-          </div>
-        </div>
-        <div class="col-12">
-          <p class="fw-bolder">{{ trans("general.Password requirements:")}}</p>
-          <ul class="ps-1 ms-25">
-            <li class="mb-50">{{ trans("general.Minimum 8 characters long - the more, the better")}}</li>
-            <li class="mb-50">{{ trans("general.At least one lowercase character")}}</li>
-            <li>{{ trans("general.At least one number, symbol, or whitespace character")}}</li>
-          </ul>
-        </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary me-1 mt-1 waves-effect waves-float waves-light">{{ trans("general.Save changes")}}</button>
-          <button type="reset" class="btn btn-outline-secondary mt-1 waves-effect">{{ trans("general.Discard")}}</button>
-        </div>
+        </form>
+        <!--/ form -->
       </div>
-    </form>
-    <!--/ form -->
-  </div>
-</div>
+    </div>
 
     <!-- deactivate account  -->
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-header border-bottom">
         <h4 class="card-title">{{ trans("general.Delete Account") }}</h4>
       </div>
@@ -129,7 +129,7 @@
           </div>
         </form>
       </div>
-    </div>
+    </div> -->
     <!--/ profile -->
   </div>
 </div>

@@ -82,4 +82,13 @@ class User extends Authenticatable
     {
         return Role::find($this->role_id);
     }
+
+    
+    
+    public function getUserPermissions()
+    {
+        return UsersPermission::where('user_id', $this->id)->get();
+    }
+
+
 }

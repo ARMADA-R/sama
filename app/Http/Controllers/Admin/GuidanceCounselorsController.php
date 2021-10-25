@@ -22,7 +22,6 @@ class GuidanceCounselorsController extends Controller
     }
 
 
-
     public function showCreateView()
     {
         $stages = Stage::all();

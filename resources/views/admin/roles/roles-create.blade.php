@@ -42,7 +42,7 @@
         <div class="card-body">
             <div class="row pt-2">
                 @foreach($permissionsAsGroups as $group => $permissions)
-                <div class="col-xxl-2 col-lg-3 col-md-4 col-sm-6">
+                <div class="col-xxl-3 col-lg-3 col-md-4 col-sm-6">
                     <div class="card shadow-none bg-transparent">
                         <div class="card-header">
                             {{$group}}

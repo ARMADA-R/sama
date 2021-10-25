@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DataTables\UsersDataTable;
+use App\DataTables\UsersPermissionsDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
 use App\Models\User;
@@ -140,6 +141,22 @@ class UsersController extends Controller
         
     }
 
+
+
+    public function getUserPermissions(UsersPermissionsDataTable $dataTable, $id)
+    {
+        $roles = Role::all();
+        $user = User::find($id);
+        return $dataTable->with('id', $id)
+        ->render('admin.users.users-edit', ['roles' => $roles, 'user' => $user]);
+        // return view('admin.users.users-edit', ['roles' => $roles, 'user' => $user]);
+    }
+
+
+    public function setUserPermissions(Request $request)
+    {
+        dd($request);
+    }
 
 
 }
